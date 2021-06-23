@@ -1,4 +1,4 @@
-let a = 2;
+let a = 4;
 let b = 10;
 let c = 18;
 
@@ -36,4 +36,15 @@ else if(b>a && b>c){
 }
 else {
   console.log(c);
+}
+
+// Exercico 4
+if (a>0){
+  console.log('positive');
+}
+else if (a<0){
+  console.log('negative');
+}
+else {
+  console.log('zero');
 }
