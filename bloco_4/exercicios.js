@@ -3,6 +3,7 @@ let i;
 let sum = 0;
 let med = 0;
 let maior = 0;
+let menor = 0;
 let impares = 0;
 
 for (i=0; i<numbers.length; i+=1){
@@ -46,3 +47,13 @@ if(impares == 0){
 else{
   console.log('Existem ' + impares + ' numeros impares');
 }
+
+menor = numbers[0];
+
+for(i=0; i<numbers.length; i+=1){
+  if(numbers[i]<menor){
+    menor = numbers[i];
+  }
+}
+
+console.log(menor);
