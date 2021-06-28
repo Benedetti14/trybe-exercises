@@ -35,16 +35,35 @@
 
 // Exercicio 3 
 
-function maior(vet){
-  let menor = vet[0];
-  let menorI = 0;
-  for(let i = 0; i<vet.length; i+=1){
-    if (vet[i] < menor){
-      menor = vet[i];
-      menorI = i;
+// function maior(vet){
+//   let menor = vet[0];
+//   let menorI = 0;
+//   for(let i = 0; i<vet.length; i+=1){
+//     if (vet[i] < menor){
+//       menor = vet[i];
+//       menorI = i;
+//     }
+//   }
+//   return menorI;
+// }
+// let teste = [2, 4, 6, 7, 10, 0, -3];
+// console.log(maior(teste));
+
+/***************************************************/
+
+// Exercicio 4
+
+function maior(nomes){
+  let maior = 0;
+  let m = 0;
+  for(let i = 0; i<nomes.length; i+=1){
+    let aux = nomes[i].length;
+    if (aux > maior){
+      maior = nomes.length;
+      m = i;
     }
   }
-  return menorI;
+  return nomes[m];
 }
-let teste = [2, 4, 6, 7, 10, 0, -3];
+let teste = ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana'];
 console.log(maior(teste));
