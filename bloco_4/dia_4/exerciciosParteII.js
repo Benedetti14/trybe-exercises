@@ -100,13 +100,33 @@
 /***************************************************/
 
 // Exercicio 6
-var total = 0;
+// var total = 0;
 
-function somatorio (n){
-  if (n != 0){
-    total = n + somatorio(n-1);
+// function somatorio (n){
+//   if (n != 0){
+//     total = n + somatorio(n-1);
+//   }
+//   return total;
+// }
+
+// console.log(somatorio(5));
+
+/***************************************************/
+
+// Exercicio 7
+
+function verifica (strWord, strEnding){
+  let aux = strEnding.length;
+  let aux2 = strWord.length;
+  let verificaFinal = true;
+
+  for(let i = 0; i<aux; i+=1){
+    if(strWord[aux2 - (aux-i)] != strEnding[i]){
+      verificaFinal = false;
+      break;
+    }
   }
-  return total;
+  return verificaFinal;
 }
 
-console.log(somatorio(5));
+console.log(verifica('trybe', 'be'));
