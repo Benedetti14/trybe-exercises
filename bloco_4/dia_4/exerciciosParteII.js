@@ -19,12 +19,16 @@
 
 function maior(vet){
   let maior = 0;
+  let maiorI = 0;
   for(let i = 0; i<vet.length; i+=1){
     if (vet[i] > maior){
       maior = vet[i];
+      maiorI = i;
     }
   }
-  return maior;
+  return maiorI;
 }
 let teste = [2, 3, 6, 7, 10, 1]
 console.log(maior(teste));
+
+/***************************************************/
