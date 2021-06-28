@@ -53,17 +53,46 @@
 
 // Exercicio 4
 
-function maior(nomes){
-  let maior = 0;
-  let m = 0;
-  for(let i = 0; i<nomes.length; i+=1){
-    let aux = nomes[i].length;
-    if (aux > maior){
-      maior = nomes.length;
-      m = i;
-    }
+// function maior(nomes){
+//   let maior = 0;
+//   let m = 0;
+//   for(let i = 0; i<nomes.length; i+=1){
+//     let aux = nomes[i].length;
+//     if (aux > maior){
+//       maior = nomes.length;
+//       m = i;
+//     }
+//   }
+//   return nomes[m];
+// }
+// let teste = ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana'];
+// console.log(maior(teste));
+
+/***************************************************/
+
+// Ecercicio 5
+
+function maisSeRepete (numeros){
+  let repete = 0;
+  let SeRepete = 0;
+  let n = 0;
+  let nMais = 0;
+
+  for(let i = 0; i<numeros.length; i+=1){
+    for(let j = i+1; j<numeros.length; j+=1){
+      if(numeros[i] === numeros[j]){
+        repete += 1;
+        n = numeros[i];
+      }
+      }
+      if (repete > SeRepete){
+        SeRepete = repete;
+        nMais = n;
+      }
   }
-  return nomes[m];
+  return nMais;
 }
-let teste = ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana'];
-console.log(maior(teste));
+
+
+let teste = [2, 3, 2, 3, 3, 2, 3];
+console.log(maisSeRepete(teste));
