@@ -94,7 +94,7 @@
         let listaItems = i;
         let items = document.createElement('li');
         items.innerText = listaItems;
-        document.querySelector('.right-content ul').appendChild(items);
+        lista.appendChild(items);
       }
 
       for (let i = 0; i < 3; i += 1){
@@ -105,6 +105,12 @@
       mainContent.removeChild(leftContent);
 
       rightContent.setAttribute('style', 'margin-right: auto');
+
+      document.querySelector('.center-content').setAttribute('style', 'background-color: green');
+      let list = document.getElementsByTagName('ul')[0];
+      let itens = document.querySelectorAll('li');
+      lista.removeChild(itens[8]);
+      lista.removeChild(itens[9]);
     </script>
   </body>
 </html>
