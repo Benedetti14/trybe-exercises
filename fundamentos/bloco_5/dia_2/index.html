@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício 5.2</title>
+    <style>
+      div {
+        border-color: black;
+        border-style: solid;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+
+      let title = document.createElement('h1');
+      title.innerText = 'Exercício 5.2 - JavaScript DOM';
+      title.className = 'title';
+      document.querySelector('body').appendChild(title);
+
+      let mainContent = document.createElement('div');
+      mainContent.className = 'main-content';
+      document.querySelector('body').appendChild(mainContent);
+
+      let centerContent = document.createElement('div');
+      centerContent.className = 'center-content';
+      document.querySelector('.main-content').appendChild(centerContent);
+
+      let textoCenter = document.createElement('p');
+      textoCenter.innerText = 'Bora gabao, vamo que vamo';
+      document.querySelector('.center-content').appendChild(textoCenter);
+
+      let leftContent = document.createElement('div');
+      leftContent.className = 'left-content';
+      document.querySelector('.main-content').appendChild(leftContent);
+
+      let rightContent = document.createElement('div');
+      rightContent.className = 'right-content';
+      document.querySelector('.main-content').appendChild(rightContent);
+
+      let img = document.createElement('img');
+      img.src = 'https://picsum.photos/200';
+      img.className = 'small-image';
+      document.querySelector('.left-content').appendChild(img);
+
+      let lista = document.createElement('ul');
+      document.querySelector('.right-content').appendChild(lista);
+      for (let i = 1; i <= 10; i += 1){
+        let listaItems = i;
+        let items = document.createElement('li');
+        items.innerText = listaItems;
+        lista.appendChild(items);
+      }
+
+      for (let i = 0; i < 3; i += 1){
+        let subTitle = document.createElement('h3');
+        document.querySelector('.main-content').appendChild(subTitle);
+        subTitle.className = 'description';
+      }
+      mainContent.removeChild(leftContent);
+
+      rightContent.setAttribute('style', 'margin-right: auto');
+
+      document.querySelector('.center-content').setAttribute('style', 'background-color: green');
+      let list = document.getElementsByTagName('ul')[0];
+      let itens = document.querySelectorAll('li');
+      lista.removeChild(itens[8]);
+      lista.removeChild(itens[9]);
+    </script>
+  </body>
+</html>
