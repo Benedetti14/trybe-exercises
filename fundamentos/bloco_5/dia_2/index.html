@@ -69,6 +69,25 @@
       let centerContent = document.createElement('div');
       centerContent.className = 'center-content';
       document.querySelector('.main-content').appendChild(centerContent);
+
+      let textoCenter = document.createElement('p');
+      textoCenter.innerText = 'Bora gabao, vamo que vamo';
+      document.querySelector('.center-content').appendChild(textoCenter);
+
+      let leftContent = document.createElement('div');
+      leftContent.className = 'left-content';
+      document.querySelector('.main-content').appendChild(leftContent);
+
+      let rightContent = document.createElement('div');
+      rightContent.className = 'right-content';
+      document.querySelector('.main-content').appendChild(rightContent);
+
+      let img = document.createElement('img');
+      img.src = 'https://picsum.photos/200';
+      img.className = 'small-image';
+      document.querySelector('.left-content').appendChild(img);
+
+      
     </script>
   </body>
 </html>
