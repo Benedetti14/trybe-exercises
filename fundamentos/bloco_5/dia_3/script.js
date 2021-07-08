@@ -16,12 +16,36 @@ createDaysOfTheWeek();
 // Escreva seu código abaixo.
 const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
-const days = document.querySelector('#days');
+function createDaysOfTheMonth(){
+  const days = document.querySelector('#days');
 
-for (let i = 0; i < dezDaysList.length; i += 1){
-  const value = dezDaysList[i];
-  const numbersDays = document.createElement('li');
-  numbersDays.innerHTML = value;
+  for (let i = 0; i < dezDaysList.length; i += 1){
+    const value = dezDaysList[i];
+    const numbersDays = document.createElement('li');
+    numbersDays.innerHTML = value;
+    days.appendChild(numbersDays);
 
-  days.appendChild(numbersDays);
+    if (value === 24 || value === 31) {
+      numbersDays.className = 'day holiday';
+    } else if (value === 4 || value === 11 || value === 18) {
+      numbersDays.className = 'day friday';
+    } else if (value === 25) {
+      numbersDays.className = 'day holiday friday';
+    } else {
+      numbersDays.className = 'day';
+    }
+  }
 }
+createDaysOfTheMonth();
+
+const buttons = document.querySelector('.buttons-container')
+
+function holidays(str) {
+  const btnHoliday = document.createElement('button');
+  btnHoliday.innerText = str;
+  btnHoliday.id = 'btn-holiday';
+
+  buttons.appendChild(btnHoliday);
+}
+
+holidays('Feriados');
