@@ -49,3 +49,22 @@ function holidays(str) {
 }
 
 holidays('Feriados');
+
+function displayHolidays() {
+  const holidayBtn = document.querySelector("#btn-holiday");
+  let backgroundColor = 'rgb(238,238,238)';
+  let holidaysClasses = document.querySelectorAll('.holiday');
+  let setNewColor = 'white';
+  
+  holidayBtn.addEventListener('click', function() {
+    for (let i = 0; i < holidaysClasses.length; i += 1) {
+      if (holidaysClasses[i].style.backgroundColor === setNewColor) {
+        holidaysClasses[i].style.backgroundColor = backgroundColor;
+      } else {
+        holidaysClasses[i].style.backgroundColor = setNewColor;
+      }
+    }
+  });
+}
+
+displayHolidays();
