@@ -1,0 +1,9 @@
+#main {
+  display: inline-block;
+  width: 70%;
+}
+
+#aside {
+float: right;
+margin: 20px;
+}
