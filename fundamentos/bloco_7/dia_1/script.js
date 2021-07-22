@@ -33,15 +33,16 @@
 
 //Exercicio 2
 
-const longestWord = (word) => {
-  let words = word.split(' ');
-  let maior = 0;
-  let w = ''
-  for (let i = 0; i < words.length; i += 1){
-    words[i].length > maior ?  maior = words[i].length : maior;
+// const longestWord = (word) => {
+//   let words = word.split(' ');
+//   let maior = 0;
+//   let w = ''
+//   for (let i = 0; i < words.length; i += 1){
+//     words[i].length > maior ?  maior = words[i].length : maior;
 
-    words[i].length === maior ? w = words[i] : w;
-  }
-  return w;
-}
-console.log(longestWord("Antônio foi no banheiro e não sabemos o que aconteceu"))
+//     words[i].length === maior ? w = words[i] : w;
+//   }
+//   return w;
+// }
+// console.log(longestWord("Antônio foi no banheiro e não sabemos o que aconteceu"))
+
