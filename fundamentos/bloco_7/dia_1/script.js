@@ -46,3 +46,32 @@
 // }
 // console.log(longestWord("Antônio foi no banheiro e não sabemos o que aconteceu"))
 
+//Exercicio 4
+
+let  stringDeter = 'Tryber x aqui';
+let skills =  ['JavaScript', 'Logica de programação', 'HTML', 'CSS', 'GitHub'];
+
+const changeX = (string) => {
+  for (let i = 0; i < stringDeter.length; i += 1) {
+    stringDeter[i] === 'x' ? stringDeter = `Tryber ${string} aqui!` : stringDeter; 
+  }
+  return stringDeter;
+}
+changeX('Gabriel');
+
+const concatSkills = (string) => {
+  skills = skills.sort();
+
+  stringDeter = `${string} Minhas Minhas cinco principais habilidades são:`;
+
+  for (let i = 0; i < skills.length; i += 1) {
+    (i === skills.length - 1) ? (stringDeter = `${stringDeter}
+    ${skills[i]}; #goTrybe`) : (stringDeter = `${stringDeter}
+    ${skills[i]};`);
+  }
+
+  return stringDeter;
+}
+
+console.log(concatSkills(stringDeter));
+
