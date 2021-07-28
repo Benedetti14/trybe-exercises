@@ -18,12 +18,35 @@
 
 //Exercicio 2
 
-const raffleCheck = (num1, num2) => num1 === num2; 
+// const raffleCheck = (num1, num2) => num1 === num2; 
 
-const raffleResult = (number, check) => {
-  const raffleNumber = Math.ceil(Math.random() * 5);
-  console.log(raffleNumber);
-  return check(raffleNumber, number) ? "Parabéns você ganhou" : "Tente novamente";
-};
+// const raffleResult = (number, check) => {
+//   const raffleNumber = Math.ceil(Math.random() * 5);
+//   console.log(raffleNumber);
+//   return check(raffleNumber, number) ? "Parabéns você ganhou" : "Tente novamente";
+// };
 
-console.log(raffleResult(3, raffleCheck));
+// console.log(raffleResult(3, raffleCheck));
+
+//Exercicio 3
+
+const RIGHT_ANSWERS = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
+const STUDENT_ANSWERS = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
+
+const correctAnswers = (rightAnswers, studentAnswers) => {
+  let count = 0.0;
+  for (let i = 0; i < rightAnswers.length; i += 1){
+    if (rightAnswers[i] === studentAnswers[i]){
+      count += 1;
+    } else {
+      count -= 0.5;
+    } 
+  }
+  return count;
+}
+
+const grade = (rightAnswers, studentAnswers, correct) => {
+  return correct(rightAnswers, studentAnswers);
+}
+
+console.log(grade(RIGHT_ANSWERS, STUDENT_ANSWERS, correctAnswers));
