@@ -30,23 +30,119 @@
 
 //Exercicio 3
 
-const RIGHT_ANSWERS = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
-const STUDENT_ANSWERS = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
+// const RIGHT_ANSWERS = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
+// const STUDENT_ANSWERS = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
 
-const correctAnswers = (rightAnswers, studentAnswers) => {
-  let count = 0.0;
-  for (let i = 0; i < rightAnswers.length; i += 1){
-    if (rightAnswers[i] === studentAnswers[i]){
-      count += 1;
+// const correctAnswers = (rightAnswers, studentAnswers) => {
+//   let count = 0.0;
+//   for (let i = 0; i < rightAnswers.length; i += 1){
+//     if (rightAnswers[i] === studentAnswers[i]){
+//       count += 1;
+//     } else if (studentAnswers[i] === 'N.A') {
+//       count;
+//     } else {
+//       count -= 0.5;
+//     } 
+//   }
+//   return count;
+// }
+
+// const grade = (rightAnswers, studentAnswers, correct) => {
+//   return correct(rightAnswers, studentAnswers);
+// }
+
+// console.log(grade(RIGHT_ANSWERS, STUDENT_ANSWERS, correctAnswers));
+
+//Bonus 
+
+const mage = {
+  healthPoints: 130,
+  intelligence: 45,
+  mana: 125,
+  damage: undefined,
+};
+
+const warrior = {
+  healthPoints: 200,
+  strength: 30,
+  weaponDmg: 2,
+  damage: undefined,
+};
+
+const dragon = {
+  healthPoints: 350,
+  strength: 50,
+  damage: undefined,
+};
+
+const battleMembers = { mage, warrior, dragon };
+
+const damage = (minDamage, maxDamage) => (minDamage + Math.ceil(Math.random() * (maxDamage - minDamage)));
+
+const dragonDamage = () => damage(battleMembers.warrior.strength, (warrior.strength * warrior.weaponDmg));
+const warriorDamage = () => damage(battleMembers.warrior.strength, (warrior.strength * warrior.weaponDmg));
+const mageDamage = () => damage(battleMembers.mage.intelligence, (mage.intelligence * 2));
+
+const mageManaUsed = () => {
+  let mana = battleMembers.mage.mana;  
+  
+  return mana < 15 ? 'Não possui mana suficiente' : 15;
+}
+
+const mageAttack = () => ({
+  mana: mageManaUsed(),
+  damage: mageDamage(),
+});
+
+let stopBattle = false;
+
+const gameActions = {
+  warriorTurn: (func) => {
+    const damage = func();
+    battleMembers.dragon.healthPoints -= damage;
+    battleMembers.warrior.damage = damage;
+  },
+  mageTurn: (func) => {
+    let mana = func().mana;
+    let damage;
+    if (mana === 'Não possui mana suficiente') {
+      damage = 0;
+      mana = 0;  
     } else {
-      count -= 0.5;
+      damage = func().damage;
+    }
+
+    battleMembers.dragon.healthPoints -= damage;
+    battleMembers.mage.damage = damage;
+    battleMembers.mage.mana -= mana;
+  },
+  dragonTurn: (func) => {
+    const damage = func();
+    battleMembers.dragon.damage = damage;
+    battleMembers.mage.healthPoints -= damage;
+    battleMembers.warrior.healthPoints -= damage;
+  },
+  finalBattle: () => {
+    if (battleMembers.dragon.healthPoints <= 0) {
+      battleMembers.dragon.healthPoints = 0;
+      stopBattle = true;
+      console.log('O dragão morreu, o mago e o guerreiro venceram a batalha!!');
+    } if (battleMembers.mage.healthPoints <= 0) {
+      battleMembers.mage.healthPoints = 0;
+      stopBattle = true;
+      console.log('O mago morreu :c');
+    } if (battleMembers.warrior.healthPoints <= 0) {
+      battleMembers.warrior.healthPoints = 0;
+      stopBattle = true;
+      ('O gurreiro moreu');
     } 
-  }
-  return count;
-}
+    console.log(battleMembers);
+  },
+};
 
-const grade = (rightAnswers, studentAnswers, correct) => {
-  return correct(rightAnswers, studentAnswers);
-}
-
-console.log(grade(RIGHT_ANSWERS, STUDENT_ANSWERS, correctAnswers));
+do {
+  gameActions.warriorTurn(warriorDamage);
+  gameActions.mageTurn(mageAttack);
+  gameActions.dragonTurn(dragonDamage);
+  gameActions.finalBattle();
+} while (stopBattle === false);
