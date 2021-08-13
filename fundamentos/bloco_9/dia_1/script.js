@@ -20,8 +20,7 @@
 
 const messageDelay = () => Math.floor(Math.random() * 5000);
 
-const getMarsTemperature = () => {
-  const maxTemperature = 58;
+const getMarsTemperature = () => {  const maxTemperature = 58;
   return Math.floor(Math.random() * maxTemperature);
 };
 
@@ -31,14 +30,14 @@ const sendMarsTemperature = (onSuccess, onError) => {
   const currentTemperature = getMarsTemperature();
   const messageSuccessfullySent = Math.random() <= 0.6;
   setTimeout(() => {
-      if(messageSuccessfullySent) onSuccess(currentTemperature)
-      else onError('Robot is busy');
+    if (messageSuccessfullySent) onSuccess(currentTemperature)
+    else onError('Robot is busy');
   }, messageDelay());
 }
 
 // definição da função sendMarsTemperature...
 
-const toFahrenheit = (degreeCelsius) => (degreeCelsius * 9/5) + 32;
+const toFahrenheit = (degreeCelsius) => (degreeCelsius * 9 / 5) + 32;
 
 const temperatureInFahrenheit = (temperature) =>
   console.log(`It is currently ${toFahrenheit(temperature)}ºF at Mars`);
