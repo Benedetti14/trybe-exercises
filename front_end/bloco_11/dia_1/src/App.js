@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+
+const Task = (value) => {
+  return (
+    <li key={value}>{value}</li>
+  );
+}
+
+const arr = ['Acordar', 'Tomar cafe', 'Lavar a louça', 'Estudar'];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>
+      {arr.map((task, i) => Task(task))}
+    </ul>
   );
 }
 
